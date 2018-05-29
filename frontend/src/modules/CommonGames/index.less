@@ -1,0 +1,65 @@
+@import "../../variables";
+
+@list-item-background: rgba( 0, 0, 0, 0.2 );
+
+.common-games {
+  margin-top: 30px;
+
+  &--loading {
+    .common-games__loader {
+      display: block;
+    }
+  }
+
+  &__loader {
+    display: none;
+  }
+
+  &__form-title {
+    margin-bottom: 10px;
+  }
+
+  &__form-text {
+    background-color: @color-input-background;
+    color: #fff;
+    border: 1px solid #000;
+    border-radius: 3px;
+    box-shadow: 1px 1px 0px #45556c;
+    width: 500px;
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  &__form-button {
+    display: block;
+    margin-top: 15px;
+  }
+
+  &__list {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 520px;
+    padding: 10px;
+    margin-left: -10px;
+    margin-top: 30px;
+
+    &-item {
+      display: inline-block;
+      max-width: 250px;
+      margin-bottom: 30px;
+      color: @color-button;
+      background-color: @list-item-background;
+
+      &-poster {
+        width: 250px;
+      }
+
+      &-title {
+        display: inline-block;
+        margin: 10px;
+      }
+    }
+  }
+}
