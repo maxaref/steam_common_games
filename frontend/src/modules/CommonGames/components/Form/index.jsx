@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
 import Button from '../../../../components/Button';
 
@@ -13,5 +14,13 @@ const Form = ({ store: { linksText, changeLinksText, findGames }  }) => (
     <Button className="common-games__form-button" onClick={findGames}>Show</Button>
   </div>
 );
+
+Form.propTypes = {
+  store: PropTypes.shape({
+    linksText: PropTypes.string.isRequired,
+    findGames: PropTypes.func.isRequired,
+    changeLinksText: PropTypes.func.isRequired,
+  }),
+};
 
 export default observer(Form);

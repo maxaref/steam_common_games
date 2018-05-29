@@ -1,18 +1,16 @@
 import { getByLinksText } from '../../services/commonGames';
-import { flow, autorun, action, observable } from "mobx";
+import { flow, action, observable } from "mobx";
 
 export class CommonGamesStore {
   @observable linksText = '';
   @observable items = [];
   @observable isLoading = false;
+  @observable isFetched = false;
 
   @action changeLinksText = (text) => {
     this.linksText = text;
+    this.isFetched = false;
   };
-
-  constructor() {
-    autorun(() => console.log(this.linksText, this.items.length));
-  }
 
   @action.bound
   findGames = flow(function* () {
@@ -20,7 +18,8 @@ export class CommonGamesStore {
 
     const games = yield getByLinksText(this.linksText);
 
-    this.items = games;
+    this.items = games.length && games || [];
     this.isLoading = false;
+    this.isFetched = true;
   });
 }
